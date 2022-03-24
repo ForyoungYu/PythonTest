@@ -13,6 +13,13 @@ def main(*args):
 
 
 # 3
+def main(lst, item):
+    try:
+        ind = lst.index(item)
+    except ValueError:
+        return '不存在'
+    else:
+        return ind
 
 
 # 4
@@ -20,11 +27,11 @@ def main(lst):
     n = len(lst)
     sum = 0
     list = []
-    for i in range(0, n):
-        sum += lst[i]
+    for i in lst:
+        sum += i
     mean = sum / n
     for i in range(0, n):
-        if (lst[i >= mean]):
+        if (lst[i] >= mean):
             list.append(lst[i])
     return list
 
@@ -47,6 +54,12 @@ def main(num):
 
 
 # 7
+def main(lst):
+    T = []
+    for i in lst:
+        if not i in T:
+            T.append(i)
+    return T
 
 
 # 8
@@ -59,13 +72,15 @@ def main(lst):
 
 
 # 9
+def main(lst):
+    lst.sort(key=lambda i: len(i), reverse=True)
+    return lst
+
 
 # 10
 from functools import reduce
-from hashlib import new
+from math import radians
 from operator import mul
-
-from urllib3 import Retry
 
 
 def main(n):
@@ -92,13 +107,15 @@ def main(vector1, vecotr2):
 def main(lst):
     n = len(lst)
     max = lst[0]
-    for i in range(i, n):
+    for i in range(1, n):
         if (len(lst[i]) > len(lst[0])):
             max = lst[i]
     return max
 
 
 # 13
+def main(lst):
+    return list(filter(lambda i: i != 0, lst))
 
 
 # 14
@@ -170,6 +187,15 @@ def main(s):
 
 
 # 18
+def main(lst):
+    set_lst = set(lst)
+    if len(set_lst) == 1:
+        return 0
+    elif len(set_lst) == len(lst):
+        return 1
+    else:
+        return 2
+
 
 # 19
 import re
@@ -193,7 +219,7 @@ def main(s):
     word = []
     words = Counter(s).most_common(3)
     for i in range(len(words)):
-        word.append(word[i][0])
+        word.append(words[i][0])
     return word
 
 
@@ -213,9 +239,14 @@ def main(n):
 
 
 # 22
+from scipy.special import comb
 
 
-# 23
+def main(n, i):
+    return int(comb(n, i))
+
+
+# 23*
 def main(n, a):
     s = 0
     cur = a
@@ -238,9 +269,25 @@ def main():
 
 print(main())
 
+
 # 25
+def main(lst):
+    sumset = set()
+    for s in lst:
+        sumset = sumset | s
+    return sumset
+
 
 # 26
+from math import sin, radians
+
+
+def main(lst):
+    sin_list = []
+    for i in lst:
+        sin_list.append(sin(radians(i)))
+    return sin_list
+
 
 # 27
 from datetime import date
@@ -298,6 +345,8 @@ def main(n):
 
 
 # 32
+def main(s, n=3):
+    return s * n
 
 
 # 33
@@ -305,28 +354,21 @@ def main(s, n):
     return (s[n:] + s[:n])
 
 
-# 34
-# 这道题在本地运行没问题，但在题框中输入运行的结果就是不同，就很迷
+# 34*
 class Number:
-    def __init__(self, num: int = 0, obj1=None, obj2=None):
-        self.num = num
-        self.obj1 = obj1
-        self.obj2 = obj2
+    def __init__(self, value: int):
+        self.num = value
 
-    def add(self):
-        return self.obj1.num + self.obj2.num
+    def __add__(self, another: object) -> object:
+        return self.num + another.num
 
-
-obj1 = Number(3)
-obj2 = Number(5)
+    def __str__(self):
+        pass
 
 
-def main(obj1, obj2):
-    output = Number(obj1=obj1, obj2=obj2)
-    return output.add()
+def main(x, y):
+    return x + y
 
-
-print(main(obj1, obj2))
 
 # 35
 
@@ -391,7 +433,7 @@ def main(lst):
     su = 0
     for i in range(len(lst)):
         su = su + abs(lst[i])
-        return su
+    return su
 
 
 # 40
@@ -399,10 +441,10 @@ def main(lst):
 
 # 41
 def main(s1, s2, *s3):
-    if (s2 in s1):
-        for i in range(len(s3)):
-            return False
-        return True
+    if (s2 in s1 and s3):
+        for i in s3:
+            if (i in s1):
+                return True
     else:
         return False
 
@@ -411,13 +453,15 @@ def main(s1, s2, *s3):
 
 # 43
 
+
 # 44
 def main(n):
     m = n * n
     su = 0
-    while(m):
-        su = su + pow(2, m-1)
-        m = m -1
+    while (m):
+        su = su + pow(2, m - 1)
+        m = m - 1
     return su
+
 
 # 45
