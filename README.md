@@ -7,5 +7,3 @@
 欢迎大家提交完善代码（点击Pull requests，贡献你的代码)
 
 看我这么努力给个星星呗~~
-
-<img src="imgs/dashang.jpg" style="zoom: 50%;" />
