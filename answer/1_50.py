@@ -247,13 +247,13 @@ def main(n, i):
 
 
 # 23*
+# 要求：不能使用循环结构和推导式
+from functools import reduce
+
+
 def main(n, a):
-    s = 0
-    cur = a
-    while (n):
-        s += cur
-        cur = cur * 10 + a
-        n -= 1
+    ls = [a]
+    s = sum(reduce(lambda x, y: x * 10 + y, ls * i) for i in range(1, n + 1))
     return s
 
 
@@ -437,6 +437,13 @@ def main(lst):
 
 
 # 40
+def main(s):
+    if not isinstance(s, str):
+        return '参数必须为字符串'
+    else:
+        s1 = s.encode('utf-8')
+        s2 = s.encode('GBK')
+    return (s1, s2)
 
 
 # 41
@@ -450,8 +457,29 @@ def main(s1, s2, *s3):
 
 
 # 42
+from math import pi as PI
+
+
+def main(r):
+    if not isinstance(r, int) or int(r) <= 0:
+        return '参数必须是大于0的整数或实数'
+    else:
+        return round(PI * (r**2), 2)
+
 
 # 43
+from itertools import permutations
+from functools import reduce
+
+
+def main(lst):
+    lst = list(permutations(lst, len(lst)))
+    new_lst = []
+    for item in lst:
+        n_item = map(lambda x: str(x), item)
+        temp = int(reduce(lambda x, y: x + y, n_item))
+        new_lst.append(temp)
+    return max(new_lst)
 
 
 # 44
@@ -465,3 +493,55 @@ def main(n):
 
 
 # 45
+def main(lst):
+    if not isinstance(lst, list):
+        return '数据格式不正确'
+    for item in lst:
+        if not isinstance(item, str):
+            return '数据格式不正确'
+    else:
+        lst1 = list(map(lambda x: x.lower(), lst))
+        ma_x = max(lst1)
+        for index, item in enumerate(lst1):
+            if item == ma_x:
+                return lst[index]
+
+
+# 46
+def main(lst):
+    if len(lst) > 7:
+        return 4
+    else:
+        return 1
+
+
+# 47
+
+
+# 48
+def main(vector1, vector2):
+    if isinstance(vector1, list) == False or isinstance(
+            vector1[0], int) == False or len(vector1) != len(vector2):
+        return '数据不对'
+    else:
+        s = list(map(lambda v1, v2: abs(v1 - v2), vector1, vector2))
+        return sum(s)
+
+
+# 49
+def main(score):
+    if 0 <= score < 60:
+        return 'F'
+    elif 59 < score < 70:
+        return 'D'
+    elif 69 < score < 80:
+        return 'C'
+    elif 79 < score < 90:
+        return 'B'
+    elif 89 < score < 101:
+        return 'A'
+    else:
+        return '数据不对'
+
+
+# 50
