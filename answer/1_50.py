@@ -225,7 +225,7 @@ def main(s):
 
 # 21
 def isPrime(num):
-    for i in range(2, num):
+    for i in range(2, num - 1):
         if ((num % i) == 0):
             return False
     return True
@@ -545,3 +545,9 @@ def main(score):
 
 
 # 50
+def main(n):
+    (a, b) = (0, 1)
+    while True:
+        (a, b) = (b, a + b)
+        if b > n:
+            return a
